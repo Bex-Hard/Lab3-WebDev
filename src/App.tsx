@@ -47,7 +47,7 @@ function App() {
 
     const fetchWeather = async () => {
       if (!API_KEY) {
-        setError('A chave da API não foi encontrada no arquivo .env.');
+        setError('Erro ao encontrar a chave da API.');
         return;
       }
 

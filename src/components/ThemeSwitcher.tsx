@@ -1,13 +1,10 @@
-import type { Theme } from '../types/Weather';
+import { useThemeContext } from '../context/ThemeContext';
 
-type ThemeSwitcherProps = {
-  theme: Theme;
-  onToggle: () => void;
-};
+export function ThemeSwitcher() {
+  const { theme, toggleTheme } = useThemeContext();
 
-export function ThemeSwitcher({ theme, onToggle }: ThemeSwitcherProps) {
   return (
-    <button className="secondary-button" onClick={onToggle}>
+    <button className="secondary-button" onClick={toggleTheme}>
       Tema: {theme === 'light' ? 'Claro' : 'Escuro'}
     </button>
   );

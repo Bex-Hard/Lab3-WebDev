@@ -2,16 +2,16 @@ import type { WeatherData } from '../types/Weather';
 
 type WeatherDisplayProps = {
   weather: WeatherData | null;
-  loading: boolean;
+  isLoading: boolean;
   error: string;
 };
 
 export function WeatherDisplay({
   weather,
-  loading,
+  isLoading,
   error,
 }: WeatherDisplayProps) {
-  if (loading) {
+  if (isLoading) {
     return <div className="card">Carregando dados meteorológicos...</div>;
   }
 
@@ -20,11 +20,7 @@ export function WeatherDisplay({
   }
 
   if (!weather) {
-    return (
-      <div className="card">
-        Pesquise por uma cidade para visualizar o clima atual.
-      </div>
-    );
+    return <div className="card">Nenhum dado meteorológico disponível.</div>;
   }
 
   return (
@@ -32,6 +28,7 @@ export function WeatherDisplay({
       <h2>
         {weather.city}, {weather.country}
       </h2>
+
       <p className="weather-description">{weather.description}</p>
 
       <div className="weather-grid">
